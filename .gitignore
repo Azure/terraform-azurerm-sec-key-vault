@@ -1,0 +1,22 @@
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfvars files
+*.tfvars
+
+# MacOS
+**/.DS_Store
+
+tfplan
+
+terraform\.tfvars
+
+terraform\.tfstate\.backup
+
+*.bak
+
+.vscode/*
