@@ -3,19 +3,20 @@ provider "azurerm" {
   features {}
 }
 
-resource "random_string" "resource_group_name_prefix" {
-  length    = 5
-  special   = false
-  lower     = true
-  min_lower = 5
+locals {
+  unique_name_stub = substr(module.naming.unique-seed, 0, 5)
+}
+
+module "naming" {
+  source = "git::https://github.com/Azure/terraform-azurerm-naming"
 }
 
 resource "azurerm_resource_group" "test_group" {
-  name     = "rg-key-vault-minimal-test-${random_string.resource_group_name_prefix.result}"
+  name     = "${module.naming.resource_group.slug}-${module.naming.key_vault.slug}-min-test-${local.unique_name_stub}"
   location = "uksouth"
 }
 
 module "terraform-azurerm-key-vault" {
-  source              = "../"
+  source              = "../../"
   resource_group_name = azurerm_resource_group.test_group.name
 }
