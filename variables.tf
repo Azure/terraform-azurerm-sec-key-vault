@@ -1,7 +1,12 @@
 #Required Variables
 variable "resource_group_name" {
   type        = string
-  description = "The Resource Group in which to put the Log Analytics resources"
+  description = "The Resource Group name in which to put the Log Analytics resources"
+}
+
+variable "resource_group_location" {
+  type        = string
+  description = "The Resource Group location in which to put the Log Analytics resources"
 }
 
 #Optional Variables

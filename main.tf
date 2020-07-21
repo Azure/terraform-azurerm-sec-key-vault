@@ -11,8 +11,8 @@ module "naming" {
 
 resource "azurerm_key_vault" "key_vault" {
   name                            = module.naming.key_vault.name_unique
-  location                        = data.azurerm_resource_group.base.location
-  resource_group_name             = data.azurerm_resource_group.base.name
+  location                        = var.resource_group_location
+  resource_group_name             = var.resource_group_name
   enabled_for_disk_encryption     = var.enabled_for_disk_encryption
   enabled_for_deployment          = var.enabled_for_deployment
   enabled_for_template_deployment = var.enabled_for_template_deployment
