@@ -52,7 +52,3 @@ variable "enabled_for_template_deployment" {
   description = "Enable Key Vault to be used in ARM templates deployments"
   default     = false
 }
-
-variable "module_depends_on" {
-  default = [""]
-}
