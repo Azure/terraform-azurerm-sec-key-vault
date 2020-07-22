@@ -27,12 +27,4 @@ resource "azurerm_key_vault" "key_vault" {
     ip_rules                   = var.allowed_ip_ranges
     virtual_network_subnet_ids = var.permitted_virtual_network_subnet_ids
   }
-
-  depends_on = [null_resource.module_depends_on]
-}
-
-resource "null_resource" "module_depends_on" {
-  triggers = {
-    value = "${length(var.module_depends_on)}"
-  }
 }
